@@ -27,6 +27,19 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_geometry_msgs
   geometry_msgs
   nodelet
+  message_generation
+)
+
+## Generate message types for publishing audio data
+add_message_files(
+  FILES
+  AudioSample.msg
+  AudioArraySample.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
 )
 
 ###################################
@@ -41,7 +54,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES k4a_ros_bridge
-#  CATKIN_DEPENDS roscpp std_msgs
+  CATKIN_DEPENDS message_runtime # roscpp std_msgs
 #  DEPENDS system_lib
 )
 
